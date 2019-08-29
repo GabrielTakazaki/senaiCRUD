@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Produtos do Senai</title>
+<style>
+body, html {
+	height: 100%;
+	margin: 0;
+	background-image: url("/senai.jpg") ;
+	background-position: center;
+	background-repeat: inherit;
+	background-size: 100% 100%;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+tr{	
+	background: transparent;
+	background-color: #cecece;
+}
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+.button {
+	background-color: #4CAF50;
+	display: inline-block;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-decoration: none;
+	position: absolute;
+	right: 0;
+}
+</style>
+
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Marca</th>
+				<th>Made In</th>
+				<th>Preço</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${listProducts}">
+				<td><span th:text="${product.id}"> Id </span></td>
+				<td><span th:text="${product.nome}"> Nome </span></td>
+				<td><span th:text="${product.brand}"> Marca </span></td>
+				<td><span th:text="${product.madein}"> Made in </span></td>
+				<td><span th:text="${product.price}"> Preço </span></td>
+				<td><a th:href="@{'/edit/'+ ${product.id}}">Editar</a></td>
+				<td><a th:href="@{'/delete/'+ ${product.id}}">Excuir</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/cadastro" class="button" style="text-align: right">Cadastrar produtos</a>
+</body>
+</html>

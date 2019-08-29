@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Cadastro</title>
+<style>
+body, html {
+	height: 100%;
+	margin: 0;
+	background-image: url("/senai.jpg") ;
+	background-position: center;
+	background-repeat: inherit;
+	background-size: 100% 100%;
+}
+
+div {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+input[type=submit],[type=button]:hover {
+	background-color: #45a049;
+}
+
+input[type=submit],[type=button] {
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=text], [type=number], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+	<div
+		style="text-align: center; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%)">
+		<h1>Cadastro de produtos</h1>
+		<form th:object="${product}" th:action="@{/save}" method="post">
+			<input th:field="*{id}" type="hidden" id="id" name="id">
+			<p>Nome:</p>
+			<input th:field="*{nome}" type="text" id="nome" name="nome" required="required">
+			<p>Marca:</p>
+			<input th:field="*{brand}" type="text" id="brand" name="brand" required="required">
+			<p>Made in:</p>
+			<input th:field="*{madein}" type="text" id="madein" name="madein" required="required">
+			<p>Preco:</p>
+			<input th:field="*{price}" type="number" min="0.00" max="1000000.00"
+				step="0.01" id="price" name="price"> 
+			<input type="submit" id="submit" name="submit"> 
+			<input type="button" onclick="goBack()" id="voltar" value="Voltar" name="voltar">
+		</form>
+	</div>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+</html>
