@@ -47,6 +47,18 @@ th {
 	position: absolute;
 	right: 0;
 }
+.buttonop {
+	background-color: #4CAF50;
+	display: inline-block;
+	color: white;
+	padding: 5px;
+	margin: 4px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-decoration: none;
+	right: 0;
+}
 </style>
 
 </head>
@@ -70,8 +82,8 @@ th {
 				<td><span th:text="${product.brand}"> Marca </span></td>
 				<td><span th:text="${product.madein}"> Made in </span></td>
 				<td><span th:text="${product.price}"> Preço </span></td>
-				<td><a th:href="@{'/edit/'+ ${product.id}}">Editar</a></td>
-				<td><a th:href="@{'/delete/'+ ${product.id}}">Excuir</a></td>
+				<td><a class="buttonop" th:href="@{'/edit/'+ ${product.id}}">Editar</a></td>
+				<td><a class="buttonop"th:href="@{'/delete/'+ ${product.id}}">Excuir</a></td>
 			</tr>
 		</tbody>
 	</table>
